@@ -1,0 +1,38 @@
+<div class="card bg-light mb-3">
+    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories</div>
+
+    <ul class="nav flex-column flex-nowrap overflow-hidden list-group category_block">
+        <li class="nav-item" *ngFor="let item of treeData">
+            <div *ngIf="item.children.length == 0">
+                <a class="nav-link collapsed text-truncate" href="{{item.categoryId}}" data-target="#submenu1"><span class="d-none d-sm-inline"> {{item.categoryName}}</span></a>
+            </div>
+
+            <div *ngIf="item.children.length > 0">
+                <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><span class="d-none d-sm-inline"> {{item.categoryName}}</span></a>
+
+                    <div class="collapse" id="submenu1" aria-expanded="false">
+                        <ul class="flex-column pl-2 nav">
+                            <li class="nav-item" *ngFor="let submentu of item.children">
+                                <div *ngIf="submentu.children.length == 0">
+                                    <a class="nav-link collapsed py-1" href="{{submentu.categoryId}}"  data-target="#submenu1sub1"><span>{{submentu.categoryName}}</span></a>
+                                </div>
+                                <div *ngIf="submentu.children.length > 0">
+                                    <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>{{submentu.categoryName}}</span></a>
+                                </div>
+                                <div *ngIf="submentu.children">
+                                    <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                        <ul class="flex-column nav pl-4">
+                                            <li class="nav-item" *ngFor="let susubmenu of submentu.children">
+                                                <a class="nav-link p-1" href="{{susubmenu.categoryId}}"> {{susubmenu.categoryName}} </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+
+        </li>
+    </ul>
+</div>
