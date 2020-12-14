@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Employee } from '../playground/recursive-tree/employee';
-import { Content } from '../services/all.model';
+import { CategoryHierarchy, RootObject } from '../services/all.model';
 import { CategoryService } from '../services/category.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { CategoryService } from '../services/category.service';
 })
 export class PartmenuComponent implements OnInit {
 
-  categories: Content[] = [];
+  categories: CategoryHierarchy [] = [];
 
   @Input() treeData: any;// Employee[];
   public employees: Employee[] = [];
@@ -19,65 +19,15 @@ export class PartmenuComponent implements OnInit {
   
 
   ngOnInit(): void {
-    // this.getCategories();
-    this.treeData = [
-      {
-        "categoryId": 0,
-        "categoryName": "Category 0",
-        "parentCategoryId": null,
-        "children": []
-      },
-      {
-        "categoryId": 1,
-        "categoryName": "Category 1",
-        "parentCategoryId": null,
-        "children": [
-          {
-            "categoryId": 2,
-            "categoryName": "Category 1-1",
-            "parentCategoryId": 1,
-            "children": [
-              {
-                "categoryId": 4,
-                "categoryName": "Category 1-1-1",
-                "parentCategoryId": 2,
-                "children": [
-                  {
-                    "categoryId": 6,
-                    "categoryName": "Category 1-1-2",
-                    "parentCategoryId": 4,
-                    "children": []
-                  },
-                  {
-                    "categoryId": 7,
-                    "categoryName": "Category 1-1-3",
-                    "parentCategoryId": 4,
-                    "children": []
-                  }
-                ]
-              },
-              {
-                "categoryId": 5,
-                "categoryName": "Category 1-1-2",
-                "parentCategoryId": 2,
-                "children": []
-              }
-            ]
-          },
-          {
-            "categoryId": 3,
-            "categoryName": "Category 1-2",
-            "parentCategoryId": 1,
-            "children": []
-          }
-        ]
-      }
-    ];
+    this.getCategories();
+    this.treeData = '';
+
+    
   
   }
 
   getCategories(): void {
-    this._categoryService.getCategories().subscribe(response => { this.categories = response.content; console.log(JSON.stringify(response.content));});
+    this._categoryService.getCategoryMenu().subscribe(response => { this.categories = response.categoryHierarchy; console.log(JSON.stringify(response.categoryHierarchy));});
   }
 
 

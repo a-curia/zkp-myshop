@@ -16,7 +16,7 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories() {
-    return this.http.get<RootObject>("http://localhost:8080/categoryDetails");
+  getCategoryMenu() {
+    return this.http.get<RootObject>("http://localhost:8080/category/menu");
   }
 }
