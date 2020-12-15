@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PartjumbotronComponent } from './partjumbotron/partjumbotron.component';
 import { PartbreadcrumbComponent } from './partbreadcrumb/partbreadcrumb.component';
 import { RecursiveTreeComponent } from './playground/recursive-tree/recursive-tree.component';
+import { MycomponentComponent } from './shared/components/mycomponent/mycomponent.component';
+import { MydirectiveDirective } from './shared/directives/mydirective.directive';
+import { MypipePipe } from './shared/pipes/mypipe.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { RecursiveTreeComponent } from './playground/recursive-tree/recursive-tr
     PartjumbotronComponent,
     PartbreadcrumbComponent,
     RecursiveTreeComponent,
+    MycomponentComponent,
+    MydirectiveDirective,
+    MypipePipe,
   ],
   imports: [
     BrowserModule,
